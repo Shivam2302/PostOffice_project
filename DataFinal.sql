@@ -1,4 +1,3 @@
---final h bhai;
 set search_path to postal_service;
 
 begin;
@@ -181,6 +180,8 @@ insert into w_cost values(201,500,'registered post',40);
 insert into w_cost values(501,1000,'registered post',50);
 insert into w_cost values(0,50,'ordinary post',10);
 insert into w_cost values(51,200,'ordinary post',15);
+
+
 
 --data for finding cost for different distances
 insert into d_cost values(0,100,'speed post',27);

@@ -1,6 +1,4 @@
--- final h bhai
 -- valid_account
--- verified
 set search_path to postal_service;
 create or replace function valid_account(acc integer) returns integer as
 $$
@@ -17,7 +15,6 @@ end;
 $$ language 'plpgsql';
 
 
---verified
 -- compute_cost
 set search_path to postal_service;
 create or replace function compute_cost() returns void as
@@ -36,7 +33,7 @@ end;
 $$language 'plpgsql';     
 
 
---verified
+
 -- check whether account number is valid or not for deposit
 set search_path to postal_service;
 create or replace function valid_user_deposit(acc integer) returns integer as $$
@@ -65,7 +62,6 @@ end
 $$ LANGUAGE 'plpgsql';
 
 
---verified
 --check whether account number is valid or not for withdrawal
 set search_path to postal_service;
 create or replace function valid_user_withdraw(acc integer) returns integer as $$
@@ -85,7 +81,6 @@ $$ language 'plpgsql';
 
 
 
---verified
 -- amount deposited in various schemes.
 set search_path to postal_service;
 create or replace function deposit_check(acc int, amount int) returns integer as $$
@@ -130,7 +125,6 @@ $$ language 'plpgsql';
 
 
 -- amount withdrawal in various schemes.
---verified
 set search_path to postal_service;
  create or replace function withdrawal_check(acc integer,amount integer) returns integer as $$
  declare 

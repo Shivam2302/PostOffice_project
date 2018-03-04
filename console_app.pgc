@@ -575,24 +575,24 @@ void query12()
 
 int main()
 {
-  EXEC SQL INCLUDE sqlca;
-  EXEC SQL BEGIN DECLARE SECTION;
+   EXEC SQL INCLUDE sqlca;
+   EXEC SQL BEGIN DECLARE SECTION;
    int choice=0;
-   const char *target = "201551076@10.100.1.62:5432";
-   const char *user = "201551076";
-   const char *password = "201551076"; 
-  EXEC SQL END DECLARE SECTION;
-  EXEC SQL CONNECT TO :target USER :user IDENTIFIED BY "201551076";
-  EXEC SQL set search_path to postal_service;	
+   const char *target = "postoffice@127.0.0.1:5432";
+   const char *user = "postgres";
+   const char *password = "password"; 
+   EXEC SQL END DECLARE SECTION;
+   EXEC SQL CONNECT TO :target USER :user IDENTIFIED BY "password";
+   EXEC SQL set search_path to postal_service;	
 
 	while(choice!=13)
-  {
+    {
 	  printf("\t\t\t\t\t\t\t POSTAL SERVICES DATABASE\n\n");
 	  printf("The queries you can perform for this database are -\n\n");
 	  printf("1.Overall investment till now in a particular scheme.\n\n");
-    printf("2.Maximum invested scheme amongst all the schemes for each year.\n\n");
+      printf("2.Maximum invested scheme amongst all the schemes for each year.\n\n");
 	  printf("3.Scheme with maximum investors.\n\n");
-    printf("4.profits in  different schemes for a customer amongst all the schemes in which he/she has invested.\n\n");
+      printf("4.profits in  different schemes for a customer amongst all the schemes in which he/she has invested.\n\n");
 	  printf("5.detail of any scheme in which a customer has invested and its maturity amount\n\n");
 	  printf("6.Maximum deliveries by the post offices in each year.\n\n");
 	  printf("7.Which scheme gets the maximum investment in a particular post office\n\n");
@@ -600,8 +600,8 @@ int main()
 	  printf("9.Amount paid by customers in a particular type of post in each year.\n\n");
 	  printf("10.Details of the female managers from all the post offices.\n\n");
 	  printf("11.Transactions between any two days by a customer in a scheme.\n\n");
-    printf("12.Make a transaction.\n\n");
-    printf("13.Exit.\n\n");
+      printf("12.Make a transaction.\n\n");
+      printf("13.Exit.\n\n");
 
 	  printf("enter the number of query u want to know\n");
 	  scanf("%d",&choice);
@@ -628,11 +628,11 @@ int main()
 		 query10();
 	  else if(choice==11)
 		 query11();
-    else if(choice==12)
-     query12();
-    else if(choice==13)
-     break;
-    else
-     printf("Invalid Choice");
+      else if(choice==12)
+     	 query12();
+      else if(choice==13)
+         break;
+      else
+         printf("Invalid Choice");
 	}
 }

@@ -1,4 +1,3 @@
---final h bhai;
 CREATE SCHEMA postal_service;
 SET SEARCH_PATH TO postal_service;
 
