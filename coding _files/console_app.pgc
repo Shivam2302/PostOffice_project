@@ -120,7 +120,7 @@ void query1()
   printf("enter id\n");
   scanf("%d",&id);
   EXEC SQL SELECT sum(account.transaction),account.scheme_id,name into :investment,:scheme_id,:name from account natural join scheme  where account.transaction>0 and account.scheme_id = :id group by account.scheme_id,scheme.name;
-  printf("total investment in %s with id %d is %d.\n\n",name,id,investment);
+  printf("\n\ntotal investment in %s with id %d is %d.\n\n",name,id,investment);
 }
 
 
@@ -150,7 +150,7 @@ void query2()
   group by account.scheme_id,name,year3 ) as r group by r.year3) as r2
   where (r1.year3=r2.year3 and r1.sum1=r2.sum1) order by year3;
 
-  printf("sum\t\t scheme_id\t\t name\t\t\t\t\t year\n");
+  printf("\n\nsum\t\t scheme_id\t\t name\t\t\t\t\t year\n");
   EXEC SQL OPEN cur;
   EXEC SQL FETCH cur into :work ;
 
@@ -182,7 +182,7 @@ void query3()
   (select count(distinct cid) as max, scheme_id,name from account natural join scheme group by account.scheme_id,name) as r1
   natural join
   (select max(count) as max from (select count(distinct cid) as count, scheme_id,name from account natural join scheme group by account.scheme_id,name) as r2) as r3 where r1.max = r3.max;
-  printf("Maximum number of investors are %d in scheme %s with id %d\n\n",max,name,scheme_id); 
+  printf("\n\nMaximum number of investors are %d in scheme %s with id %d\n\n",max,name,scheme_id); 
 }
 
 
@@ -201,7 +201,7 @@ void query4()
     int profit;
   EXEC SQL END DECLARE SECTION;
 
-  printf("enter the customer id\n");
+  printf("\n\nenter the customer id\n");
   scanf("%d",&ci);
   printf("\n");
 
@@ -279,7 +279,7 @@ void query5()
     else
       maturity_amount = 2*transaction;
  
-      printf("maturity_amount you will receive is %d if there will be no future withdraw from now on\n\n",maturity_amount);
+      printf("\n\nmaturity_amount you will receive is %d if there will be no future withdraw from now on\n\n",maturity_amount);
   }
 
   else
@@ -306,7 +306,7 @@ void query6()
   as r3 group by year1) as r2 where r1.max = r2.max and r1.year1 = r2.year1;
   EXEC SQL OPEN cur6;
 
-  printf("Max deliveries\t pin_no\t\t year\n\n");
+  printf("\n\nMax deliveries\t pin_no\t\t year\n\n");
   EXEC SQL FETCH cur6 into :work ;
 
   while(sqlca.sqlcode==0) 
@@ -452,7 +452,7 @@ void query11()
   EXEC SQL END DECLARE SECTION;
 
   printf("enter dates and account_no\n");
-  scanf("%s%s%d",&s_date,&t_date,&acc);
+  scanf("%s%s%d",s_date,t_date,&acc);
   printf("\n");
   
   mystmt =" SELECT valid_account(:acc) ";
@@ -521,7 +521,7 @@ void query12()
       {
         printf("You can make deposit\n");
         printf("enter today's date");
-        scanf("%s",&tod_date);
+        scanf("%s",tod_date);
               
         EXEC SQL SELECT distinct pin,cid,scheme_id,start_date into :pin,:cid,:scheme_id,:start_date from account where account_no=:acc;
         EXEC SQL set transaction read write;
@@ -549,7 +549,7 @@ void query12()
       {
         printf("You can make withdraw\n");
         printf("enter today's date");
-        scanf("%s",&tod_date);
+        scanf("%s",tod_date);
 
         EXEC SQL SELECT distinct pin,cid,scheme_id,start_date into :pin,:cid,:scheme_id,:start_date from account where account_no=:acc;
         EXEC SQL set transaction read write;
@@ -587,7 +587,7 @@ int main()
 
 	while(choice!=13)
     {
-	  printf("\t\t\t\t\t\t\t POSTAL SERVICES DATABASE\n\n");
+	  printf("\n\n\t\t\t\t\t POSTAL SERVICES DATABASE\n\n");
 	  printf("The queries you can perform for this database are -\n\n");
 	  printf("1.Overall investment till now in a particular scheme.\n\n");
       printf("2.Maximum invested scheme amongst all the schemes for each year.\n\n");

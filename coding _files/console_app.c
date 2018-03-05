@@ -355,7 +355,7 @@ void query1()
 	ECPGt_NO_INDICATOR, NULL , 0L, 0L, 0L, ECPGt_EORT);}
 #line 122 "console_app.pgc"
 
-  printf("total investment in %s with id %d is %d.\n\n",name,id,investment);
+  printf("\n\ntotal investment in %s with id %d is %d.\n\n",name,id,investment);
 }
 
 
@@ -392,7 +392,7 @@ void query2()
 #line 151 "console_app.pgc"
 
 
-  printf("sum\t\t scheme_id\t\t name\t\t\t\t\t year\n");
+  printf("\n\nsum\t\t scheme_id\t\t name\t\t\t\t\t year\n");
   { ECPGdo(__LINE__, 0, 1, NULL, 0, ECPGst_normal, "declare cur cursor for select sum1 , scheme_id , name , year3 from ( select sum ( transaction ) as sum1 , account . scheme_id , name , extract ( year from date_of_trans ) as year3 from account natural join scheme where ( transaction > 0 ) group by account . scheme_id , name , year3 ) as r1 natural join ( select max ( sume ) as sum1 , year3 from ( select sum ( transaction ) as sume , account . scheme_id , name , extract ( year from date_of_trans ) as year3 from account natural join scheme where ( transaction > 0 ) group by account . scheme_id , name , year3 ) as r group by r . year3 ) as r2 where ( r1 . year3 = r2 . year3 and r1 . sum1 = r2 . sum1 ) order by year3", ECPGt_EOIT, ECPGt_EORT);}
 #line 154 "console_app.pgc"
 
@@ -461,7 +461,7 @@ void query3()
 	ECPGt_NO_INDICATOR, NULL , 0L, 0L, 0L, ECPGt_EORT);}
 #line 184 "console_app.pgc"
 
-  printf("Maximum number of investors are %d in scheme %s with id %d\n\n",max,name,scheme_id); 
+  printf("\n\nMaximum number of investors are %d in scheme %s with id %d\n\n",max,name,scheme_id); 
 }
 
 
@@ -494,7 +494,7 @@ void query4()
 #line 202 "console_app.pgc"
 
 
-  printf("enter the customer id\n");
+  printf("\n\nenter the customer id\n");
   scanf("%d",&ci);
   printf("\n");
 
@@ -652,7 +652,7 @@ void query5()
     else
       maturity_amount = 2*transaction;
  
-      printf("maturity_amount you will receive is %d if there will be no future withdraw from now on\n\n",maturity_amount);
+      printf("\n\nmaturity_amount you will receive is %d if there will be no future withdraw from now on\n\n",maturity_amount);
   }
 
   else
@@ -684,7 +684,7 @@ void query6()
 #line 307 "console_app.pgc"
 
 
-  printf("Max deliveries\t pin_no\t\t year\n\n");
+  printf("\n\nMax deliveries\t pin_no\t\t year\n\n");
   { ECPGdo(__LINE__, 0, 1, NULL, 0, ECPGst_normal, "fetch cur6", ECPGt_EOIT, 
 	ECPGt_int,&(work.delivery),(long)1,(long)1,sizeof( query6_rec ), 
 	ECPGt_NO_INDICATOR, NULL , 0L, 0L, 0L, 
@@ -967,7 +967,7 @@ void query11()
 
 
   printf("enter dates and account_no\n");
-  scanf("%s%s%d",&s_date,&t_date,&acc);
+  scanf("%s%s%d",s_date,t_date,&acc);
   printf("\n");
   
   mystmt =" SELECT valid_account(:acc) ";
@@ -1105,7 +1105,7 @@ void query12()
       {
         printf("You can make deposit\n");
         printf("enter today's date");
-        scanf("%s",&tod_date);
+        scanf("%s",tod_date);
               
         { ECPGdo(__LINE__, 0, 1, NULL, 0, ECPGst_normal, "select distinct pin , cid , scheme_id , start_date from account where account_no = $1 ", 
 	ECPGt_int,&(acc),(long)1,(long)1,sizeof(int), 
@@ -1181,7 +1181,7 @@ void query12()
       {
         printf("You can make withdraw\n");
         printf("enter today's date");
-        scanf("%s",&tod_date);
+        scanf("%s",tod_date);
 
         { ECPGdo(__LINE__, 0, 1, NULL, 0, ECPGst_normal, "select distinct pin , cid , scheme_id , start_date from account where account_no = $1 ", 
 	ECPGt_int,&(acc),(long)1,(long)1,sizeof(int), 
@@ -1339,7 +1339,7 @@ struct sqlca_t *ECPGget_sqlca(void);
 
 	while(choice!=13)
     {
-	  printf("\t\t\t\t\t\t\t POSTAL SERVICES DATABASE\n\n");
+	  printf("\n\n\t\t\t\t\t POSTAL SERVICES DATABASE\n\n");
 	  printf("The queries you can perform for this database are -\n\n");
 	  printf("1.Overall investment till now in a particular scheme.\n\n");
       printf("2.Maximum invested scheme amongst all the schemes for each year.\n\n");
